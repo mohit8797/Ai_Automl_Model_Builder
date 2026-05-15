@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Training Complete - AutoML Builder</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span>🤖 AutoML Builder</span>
+            </div>
+            <div class="navbar-cta">
+                <a href="/" class="btn btn-primary btn-sm">← Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <div style="padding: calc(120px + 2rem) 0 2rem;">
+        <div class="container">
+            <!-- Success Banner -->
+            <div class="alert alert-success" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                <span style="font-size: 1.5rem;">✅</span>
+                <div>
+                    <h4 style="margin: 0; color: var(--success-color);">Model Training Completed Successfully!</h4>
+                    <p style="margin: 0.5rem 0 0; font-size: 0.9rem;">Your model is ready to download and deploy.</p>
+                </div>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="card" style="margin-bottom: 2rem; border-color: var(--primary-color);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div>
+                        <div style="color: var(--text-tertiary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Project Name</div>
+                        <div style="font-size: 1.25rem; font-weight: 700;">{{ result.project_name }}</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--text-tertiary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Problem Type</div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="badge badge-primary">{{ result.task_type }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="color: var(--text-tertiary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Status</div>
+                        <div style="color: var(--success-color); font-weight: 600;">✓ Complete</div>
+                    </div>
+                    <div>
+                        <div style="color: var(--text-tertiary); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Model Type</div>
+                        <div>Neural Network</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <!-- Left Column: Evaluation Metrics -->
+                <div>
+                    <h2 style="margin-bottom: 1.5rem;">📊 Performance Metrics</h2>
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <h4 style="margin-bottom: 1rem;">Evaluation Results</h4>
+                        {% if result.evaluation %}
+                            {% if result.evaluation is mapping %}
+                                {% for metric, value in result.evaluation.items() %}
+                                <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); align-items: center;">
+                                    <span style="color: var(--text-secondary); text-transform: capitalize;">{{ metric.replace('_', ' ') }}</span>
+                                    <span style="font-weight: 600; font-size: 1.1rem;">
+                                        {% if value is number %}
+                                            {{ "%.4f"|format(value) }}
+                                        {% else %}
+                                            {{ value }}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                {% for value in result.evaluation %}
+                                <div style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); align-items: center;">
+                                    <span style="color: var(--text-secondary);">Metric {{ loop.index }}</span>
+                                    <span style="font-weight: 600; font-size: 1.1rem;">
+                                        {% if value is number %}
+                                            {{ "%.4f"|format(value) }}
+                                        {% else %}
+                                            {{ value }}
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% else %}
+                            <p style="color: var(--text-tertiary);">Evaluation metrics will be displayed here.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Right Column: Model Details -->
+                <div>
+                    <h2 style="margin-bottom: 1.5rem;">⚙️ Model Details</h2>
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <div style="display: grid; gap: 1rem;">
+                            <div>
+                                <div style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 0.25rem;">Algorithm Type</div>
+                                <div style="font-weight: 600;">Neural Network (Keras/TensorFlow)</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 0.25rem;">Architecture</div>
+                                <div style="font-weight: 600;">Sequential Model</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 0.25rem;">Optimizer</div>
+                                <div style="font-weight: 600;">Adam</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 0.25rem;">Activation Function</div>
+                                <div style="font-weight: 600;">ReLU / Sigmoid / Softmax</div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-tertiary); font-size: 0.875rem; margin-bottom: 0.25rem;">Training Status</div>
+                                <div style="color: var(--success-color); font-weight: 600;">✓ Ready for Inference</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <h2 style="margin-bottom: 1.5rem; margin-top: 2rem;">📥 Download Artifacts</h2>
+            <div class="grid grid-3" style="margin-bottom: 2rem;">
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
+                    <h4 style="margin-bottom: 0.5rem;">Trained Model</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">{{ result.model_filename or result.model_path }}</p>
+                    <a href="{{ url_for('web.download_model', project_slug=result.project_slug) }}" class="btn btn-primary btn-sm" style="width: 100%;">Download Model</a>
+                </div>
+
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
+                    <h4 style="margin-bottom: 0.5rem;">Preprocessing Objects</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">Scalers & Encoders</p>
+                    <a href="{{ url_for('web.download_artifact', project_slug=result.project_slug, artifact_name='scaler.pkl') }}" class="btn btn-primary btn-sm" style="width: 100%;">Download PKL</a>
+                </div>
+
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐍</div>
+                    <h4 style="margin-bottom: 0.5rem;">Prediction Script</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">predict.py</p>
+                    <a href="{{ url_for('web.download_artifact', project_slug=result.project_slug, artifact_name='predict.py') }}" class="btn btn-primary btn-sm" style="width: 100%;">Download</a>
+                </div>
+
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📋</div>
+                    <h4 style="margin-bottom: 0.5rem;">Requirements</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">requirements.txt</p>
+                    <a href="{{ url_for('web.download_artifact', project_slug=result.project_slug, artifact_name='requirements.txt') }}" class="btn btn-primary btn-sm" style="width: 100%;">Download TXT</a>
+                </div>
+
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
+                    <h4 style="margin-bottom: 0.5rem;">All Files (ZIP)</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">Complete package</p>
+                    <a href="{{ url_for('web.download_project_zip', project_slug=result.project_slug) }}" class="btn btn-accent btn-sm" style="width: 100%;">Download ZIP</a>
+                </div>
+
+                <div class="card" style="text-align: center; cursor: pointer; transition: all var(--transition-base);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐳</div>
+                    <h4 style="margin-bottom: 0.5rem;">Docker Config</h4>
+                    <p style="color: var(--text-tertiary); font-size: 0.85rem; margin-bottom: 1rem;">Dockerfile</p>
+                    <a href="{{ url_for('web.download_dockerfile') }}" class="btn btn-primary btn-sm" style="width: 100%;">Download</a>
+                </div>
+            </div>
+
+            <!-- Documentation and Quickstart -->
+            <h2 style="margin-bottom: 1.5rem; margin-top: 2rem;">📘 Documentation & Quickstart</h2>
+            <div class="card" style="margin-bottom: 1.5rem;">
+                <h4>How to Run Locally</h4>
+                <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                    <li>Download the ZIP and extract the `project_artifacts` folder.</li>
+                    <li>Create a virtual environment (recommended Python 3.10 or 3.11).</li>
+                    <li>Install dependencies: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">pip install -r requirements.txt</code></li>
+                    <li>Edit <strong>sample_input.py</strong> or <strong>predict.py</strong> to supply your input values.</li>
+                    <li>Run: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">python predict.py</code></li>
+                </ol>
+                <p style="margin-top: 1rem; color: var(--text-tertiary);">Supported OS: Windows, macOS, Linux. Recommended Python: 3.10 or 3.11. See README for TensorFlow platform notes.</p>
+                <div style="margin-top: 1rem; display:flex; gap:0.5rem;">
+                    <a href="{{ url_for('web.download_artifact', project_slug=result.project_slug, artifact_name='README.md') }}" class="btn btn-secondary btn-sm">Download README</a>
+                    <a href="{{ url_for('web.download_artifact', project_slug=result.project_slug, artifact_name='sample_input.py') }}" class="btn btn-secondary btn-sm">Download Sample Input</a>
+                </div>
+            </div>
+
+            <!-- Code Examples Section -->
+            <h2 style="margin-bottom: 1.5rem; margin-top: 2rem;">💻 Production-Ready Code</h2>
+            <div class="grid grid-2" style="margin-bottom: 2rem;">
+                <!-- Python Inference Example -->
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">🐍 Python Inference</h4>
+                    <pre style="background: rgba(0, 0, 0, 0.3); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; color: #86efac; font-family: var(--font-mono); font-size: 0.85rem; max-height: 300px;"><code>import numpy as np
+import pandas as pd
+from tensorflow.keras.models import load_model
+import pickle
+
+# Load model and preprocessing objects
+model = load_model('model.h5')
+scaler = pickle.load(open('scaler.pkl', 'rb'))
+label_encoders = pickle.load(open('label_encoders.pkl', 'rb'))
+
+# Prepare data
+data = pd.read_csv('input.csv')
+X = scaler.transform(data)
+
+# Make predictions
+predictions = model.predict(X)
+print("Predictions:", predictions)</code></pre>
+                </div>
+
+                <!-- Flask API Example -->
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">⚡ Flask API</h4>
+                    <pre style="background: rgba(0, 0, 0, 0.3); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; color: #86efac; font-family: var(--font-mono); font-size: 0.85rem; max-height: 300px;"><code>from flask import Flask, request, jsonify
+from tensorflow.keras.models import load_model
+import pickle
+
+app = Flask(__name__)
+model = load_model('model.h5')
+scaler = pickle.load(open('scaler.pkl', 'rb'))
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    X = scaler.transform([data.values()])
+    pred = model.predict(X)
+    return jsonify({'prediction': float(pred[0])})
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)</code></pre>
+                </div>
+
+                <!-- FastAPI Example -->
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">🚀 FastAPI</h4>
+                    <pre style="background: rgba(0, 0, 0, 0.3); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; color: #86efac; font-family: var(--font-mono); font-size: 0.85rem; max-height: 300px;"><code>from fastapi import FastAPI
+from pydantic import BaseModel
+from tensorflow.keras.models import load_model
+import pickle
+
+app = FastAPI()
+model = load_model('model.h5')
+
+class Input(BaseModel):
+    features: list
+
+@app.post("/predict")
+async def predict(input: Input):
+    pred = model.predict([input.features])
+    return {"prediction": float(pred[0])}
+
+# Run: uvicorn app:app --reload</code></pre>
+                </div>
+
+                <!-- Batch Prediction -->
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">📊 Batch Prediction</h4>
+                    <pre style="background: rgba(0, 0, 0, 0.3); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; color: #86efac; font-family: var(--font-mono); font-size: 0.85rem; max-height: 300px;"><code>import pandas as pd
+import numpy as np
+from tensorflow.keras.models import load_model
+import pickle
+
+# Load artifacts
+model = load_model('model.h5')
+scaler = pickle.load(open('scaler.pkl', 'rb'))
+
+# Read and process batch
+df = pd.read_csv('batch_data.csv')
+X = scaler.transform(df)
+
+# Predict
+predictions = model.predict(X)
+df['prediction'] = predictions
+
+# Save results
+df.to_csv('predictions.csv', index=False)</code></pre>
+                </div>
+            </div>
+
+            <!-- Deployment Guides -->
+            <h2 style="margin-bottom: 1.5rem; margin-top: 2rem;">🚀 Deployment Guides</h2>
+            <div class="grid grid-2" style="margin-bottom: 2rem;">
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">Local Development (Flask)</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Extract all files from ZIP</li>
+                        <li>Install dependencies: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">pip install -r requirements.txt</code></li>
+                        <li>Run server: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">python app.py</code></li>
+                        <li>Test at <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">http://localhost:5000</code></li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">Docker Deployment</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Build: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">docker build -t model:latest .</code></li>
+                        <li>Run: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">docker run -p 5000:5000 model:latest</code></li>
+                        <li>Push to registry (Docker Hub, ACR, etc.)</li>
+                        <li>Deploy to cloud platform</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">Render Deployment</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Create account on <a href="#" style="color: var(--accent-color);">render.com</a></li>
+                        <li>Connect GitHub repository</li>
+                        <li>Add Environment: <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 0.25rem;">FLASK_ENV=production</code></li>
+                        <li>Deploy with one click</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">HuggingFace Spaces</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Go to <a href="#" style="color: var(--accent-color);">huggingface.co/spaces</a></li>
+                        <li>Create new Space (Streamlit)</li>
+                        <li>Upload app.py and model files</li>
+                        <li>Share publicly with the community</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">Azure App Service</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Create Web App on Azure</li>
+                        <li>Deploy via GitHub Actions or ZIP upload</li>
+                        <li>Configure environment variables</li>
+                        <li>Access at custom domain</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h4 style="margin-bottom: 1rem;">AWS / GCP / Lambda</h4>
+                    <ol style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                        <li>Package as Lambda function or container</li>
+                        <li>Upload to cloud storage</li>
+                        <li>Deploy with CloudFormation/Terraform</li>
+                        <li>Set API Gateway endpoint</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="card" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%); margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 1rem;">✅ Next Steps</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; color: var(--text-secondary);">
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">1. Download Model</h4>
+                        <p>Get all your model artifacts and code in one convenient ZIP file.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">2. Test Locally</h4>
+                        <p>Run the model locally using the provided Python scripts and Flask app.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">3. Deploy to Cloud</h4>
+                        <p>Use Docker or follow platform-specific guides to deploy your model globally.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">4. Monitor Performance</h4>
+                        <p>Track predictions and model accuracy in production using logs and metrics.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="/" class="btn btn-primary btn-lg">← Back to Home</a>
+                <a href="/" class="btn btn-secondary btn-lg">Build Another Model</a>
+                <button onclick="Toast.success('Documentation link copied!')" class="btn btn-accent btn-lg">📖 Read Full Docs</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Show success message
+        document.addEventListener('DOMContentLoaded', () => {
+            Toast.success('Your model is ready! Download the artifacts to get started.');
+        });
+    </script>
+</body>
+</html>

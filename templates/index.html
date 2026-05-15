@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoML Model Builder - Professional AI SaaS Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <span>🤖 AutoML Builder</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#workflow">Workflow</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#deployment">Deployment</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="navbar-cta">
+                <a href="#get-started" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Build ML Models at Scale</h1>
+            <div class="tagline">🚀 No Coding Required</div>
+            <p>
+                The most powerful AutoML platform that enables anyone to build, train, and deploy 
+                production-ready machine learning models without writing a single line of code.
+            </p>
+            <div class="hero-buttons">
+                <a href="#get-started" class="btn btn-primary btn-lg">Start Building Now</a>
+                <a href="#features" class="btn btn-secondary btn-lg">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Overview -->
+    <section class="section" style="background: rgba(102, 126, 234, 0.05);">
+        <div class="container">
+            <div class="section-title">
+                <h2>What This Platform Does</h2>
+                <p>Complete end-to-end automation for machine learning workflows</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Data Processing</h4>
+                    <p>Automatic data cleaning, preprocessing, and feature engineering. Handle missing values and outliers intelligently.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h4>Model Training</h4>
+                    <p>Train multiple model types with automatic hyperparameter tuning and cross-validation for optimal results.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Instant Deployment</h4>
+                    <p>Download trained models and deploy them with zero configuration. Flask, FastAPI, Docker - everything included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+                <p>Everything you need for professional ML development</p>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h4>✨ Supported Model Types</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>• Classification (Binary & Multiclass)</li>
+                        <li>• Regression</li>
+                        <li>• Neural Networks (ANN, CNN, RNN, LSTM)</li>
+                        <li>• Ensemble Methods (Random Forest, XGBoost)</li>
+                        <li>• Support Vector Machines (SVM)</li>
+                        <li>• K-Nearest Neighbors (KNN)</li>
+                        <li>• Decision Trees</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>📁 Supported Input Formats</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>• CSV files</li>
+                        <li>• Excel spreadsheets</li>
+                        <li>• Large dataset support (up to 25MB)</li>
+                        <li>• Automatic type detection</li>
+                        <li>• Multiple encoding support</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🎁 Export Formats & Artifacts</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>• .h5 (Keras/TensorFlow models)</li>
+                        <li>• .pkl (Scikit-learn & ML models)</li>
+                        <li>• Scaler objects</li>
+                        <li>• Label encoders</li>
+                        <li>• Complete prediction scripts</li>
+                        <li>• requirements.txt files</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>🚀 Deployment Ready</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>• Flask API templates</li>
+                        <li>• FastAPI examples</li>
+                        <li>• Docker containerization</li>
+                        <li>• Streamlit dashboards</li>
+                        <li>• Production-ready code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Models -->
+    <section class="section" id="models" style="background: rgba(102, 126, 234, 0.05);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Supported AI Models</h2>
+                <p>Access to state-of-the-art machine learning algorithms</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h5>Classification</h5>
+                    <p class="card-description">Binary and multiclass categorization models</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h5>Regression</h5>
+                    <p class="card-description">Predict continuous numerical values</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h5>Neural Networks</h5>
+                    <p class="card-description">Deep learning with ANN, CNN, RNN, LSTM</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌲</div>
+                    <h5>Random Forest</h5>
+                    <p class="card-description">Ensemble tree-based models</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h5>XGBoost</h5>
+                    <p class="card-description">Gradient boosting for optimal performance</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h5>SVM</h5>
+                    <p class="card-description">Support Vector Machines for complex patterns</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h5>KNN</h5>
+                    <p class="card-description">K-Nearest Neighbors for local patterns</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌳</div>
+                    <h5>Decision Trees</h5>
+                    <p class="card-description">Interpretable tree-based models</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="section" id="workflow">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple 6-Step Workflow</h2>
+                <p>From data to production in minutes</p>
+            </div>
+            <div class="steps">
+                <div class="step completed">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Upload Dataset</div>
+                    <div class="step-description">CSV or Excel file</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Configure Model</div>
+                    <div class="step-description">Select type & parameters</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Train Model</div>
+                    <div class="step-description">Automatic tuning included</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Evaluate Results</div>
+                    <div class="step-description">Accuracy, metrics & charts</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Download Model</div>
+                    <div class="step-description">All artifacts included</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Deploy</div>
+                    <div class="step-description">Flask, FastAPI, Docker</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" style="background: rgba(102, 126, 234, 0.05);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose AutoML Builder?</h2>
+                <p>Benefits that set us apart</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>⚡ Lightning Fast</h4>
+                    <p>Train complex models in minutes, not hours. Automatic optimization for speed.</p>
+                </div>
+                <div class="card">
+                    <h4>🎓 Beginner Friendly</h4>
+                    <p>No ML expertise required. Intuitive interface guides you through each step.</p>
+                </div>
+                <div class="card">
+                    <h4>🏆 Production Ready</h4>
+                    <p>Deploy immediately with complete API templates and Docker support included.</p>
+                </div>
+                <div class="card">
+                    <h4>📊 Comprehensive Analytics</h4>
+                    <p>Detailed performance metrics, confusion matrices, and visualization charts.</p>
+                </div>
+                <div class="card">
+                    <h4>🔒 Data Safe</h4>
+                    <p>Your data never leaves your machine. Everything runs locally and securely.</p>
+                </div>
+                <div class="card">
+                    <h4>🌐 Cloud Ready</h4>
+                    <p>Deploy to Azure, AWS, GCP, Render, Railway, or HuggingFace instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="section" id="deployment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Real-World Use Cases</h2>
+                <p>Built for professionals and enterprises</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>🛒 E-commerce</h4>
+                    <p>Customer behavior prediction, churn forecasting, recommendation systems, demand forecasting.</p>
+                </div>
+                <div class="card">
+                    <h4>🏥 Healthcare</h4>
+                    <p>Disease prediction, patient outcomes, diagnostic support, risk stratification.</p>
+                </div>
+                <div class="card">
+                    <h4>💰 Finance</h4>
+                    <p>Credit scoring, fraud detection, stock prediction, loan approval automation.</p>
+                </div>
+                <div class="card">
+                    <h4>🌾 Agriculture</h4>
+                    <p>Crop yield prediction, disease detection, weather forecasting, resource optimization.</p>
+                </div>
+                <div class="card">
+                    <h4>🏭 Manufacturing</h4>
+                    <p>Quality control, predictive maintenance, anomaly detection, efficiency optimization.</p>
+                </div>
+                <div class="card">
+                    <h4>📱 Marketing</h4>
+                    <p>Customer segmentation, campaign optimization, lead scoring, churn prediction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Guide -->
+    <section class="section" style="background: rgba(102, 126, 234, 0.05);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Deploy Anywhere</h2>
+                <p>Multiple deployment options with complete guides</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>☁️ Local Development</h4>
+                    <p>Run models locally with Flask or FastAPI. Perfect for testing and development workflows.</p>
+                </div>
+                <div class="card">
+                    <h4>🚀 Render</h4>
+                    <p>Easy one-click deployment to Render with automatic scaling and monitoring.</p>
+                </div>
+                <div class="card">
+                    <h4>🚂 Railway</h4>
+                    <p>Deploy to Railway with database support and environment variables.</p>
+                </div>
+                <div class="card">
+                    <h4>🤗 HuggingFace Spaces</h4>
+                    <p>Share models as Streamlit apps with the ML community instantly.</p>
+                </div>
+                <div class="card">
+                    <h4>🐳 Docker</h4>
+                    <p>Complete Docker configuration for enterprise deployments and scaling.</p>
+                </div>
+                <div class="card">
+                    <h4>☁️ Cloud Platforms</h4>
+                    <p>Deploy to Azure, AWS, GCP with automated CI/CD pipelines included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" id="get-started" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);">
+        <div class="container container-sm">
+            <div class="text-center">
+                <h2 style="margin-bottom: var(--spacing-lg);">Ready to Build Your First Model?</h2>
+                <p style="font-size: 1.125rem; margin-bottom: var(--spacing-2xl);">
+                    Join thousands of data scientists and developers building production-ready ML models.
+                </p>
+                <div style="display: flex; gap: var(--spacing-lg); justify-content: center; flex-wrap: wrap;">
+                    <a href="#build-model" class="btn btn-primary btn-lg" onclick="document.querySelector('#model-wizard').scrollIntoView({ behavior: 'smooth' })">
+                        Build Your Model Now
+                    </a>
+                    <a href="#features" class="btn btn-secondary btn-lg">Explore Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Builder Form (Multi-Step) -->
+    <section class="section" id="model-wizard">
+        <div class="container container-sm">
+            <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1.5rem; padding: 3rem; margin-bottom: 2rem;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Build Your AI Model</h2>
+                
+                <!-- Progress Bar -->
+                <div class="progress">
+                    <div class="progress-bar" style="width: 20%;" data-progress-bar></div>
+                </div>
+
+                <!-- Step Indicators -->
+                <div class="steps" style="margin: 2rem 0;">
+                    <div class="step active" data-step-indicator>
+                        <div class="step-number">1</div>
+                        <div class="step-title">Project Info</div>
+                    </div>
+                    <div class="step" data-step-indicator>
+                        <div class="step-number">2</div>
+                        <div class="step-title">Dataset</div>
+                    </div>
+                    <div class="step" data-step-indicator>
+                        <div class="step-number">3</div>
+                        <div class="step-title">Model Config</div>
+                    </div>
+                    <div class="step" data-step-indicator>
+                        <div class="step-number">4</div>
+                        <div class="step-title">Options</div>
+                    </div>
+                    <div class="step" data-step-indicator>
+                        <div class="step-number">5</div>
+                        <div class="step-title">Review</div>
+                    </div>
+                </div>
+
+                <form action="/create-project" method="POST" enctype="multipart/form-data" id="model-form">
+                    {% if error %}
+                    <div class="alert alert-danger">
+                        <span>⚠️</span>
+                        <span>{{ error }}</span>
+                    </div>
+                    {% endif %}
+                    <div id="training-panel" class="training-panel hidden">
+                        <div class="training-panel-header">
+                            <div class="training-badge">Training in progress</div>
+                            <div id="training-status-text" class="training-status-text">Preparing your dataset...</div>
+                        </div>
+                        <div class="training-progress-bar">
+                            <div id="training-progress-fill" class="training-progress-fill"></div>
+                        </div>
+                        <p class="training-description">Your dataset is being processed and the model is training. Please keep this page open until training completes.</p>
+                    </div>
+
+                    <!-- Step 1: Project Info -->
+                    <div data-step="1" style="display: block;">
+                        <h3 style="margin-bottom: 1.5rem;">Project Details</h3>
+                        <div class="form-group">
+                            <label class="form-label">Project Name *</label>
+                            <input type="text" name="project_name" class="form-control" placeholder="e.g., Customer Churn Prediction" required>
+                            <div class="form-helper">Give your model project a descriptive name</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Problem Statement *</label>
+                            <textarea name="problem_statement" class="form-control" placeholder="Describe what problem you're solving..." required></textarea>
+                            <div class="form-helper">This helps optimize the model for your use case</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Dataset -->
+                    <div data-step="2">
+                        <h3 style="margin-bottom: 1.5rem;">Upload Dataset</h3>
+                        <div class="form-group">
+                            <label class="form-label">Select Dataset *</label>
+                            <div class="file-input-wrapper">
+                                <label class="file-input-label" for="dataset">
+                                    <span>📁</span>
+                                    <span>
+                                        <strong>Click to upload</strong> or drag and drop
+                                        <br>
+                                        <span class="form-helper">CSV, XLSX, or XLS files up to 25MB</span>
+                                    </span>
+                                </label>
+                                <input type="file" id="dataset" name="dataset" accept=".csv,.xlsx,.xls" required>
+                            </div>
+                            <div data-file-name style="margin-top: 1rem; color: var(--text-secondary);"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Model Configuration -->
+                    <div data-step="3">
+                        <h3 style="margin-bottom: 1.5rem;">Model Configuration</h3>
+                        <div class="form-group">
+                            <label class="form-label">Target Column *</label>
+                            <input type="text" name="target_column" class="form-control" placeholder="e.g., sales, churn, price" required>
+                            <div class="form-helper">The column you want to predict</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Problem Type *</label>
+                            <select name="problem_type" class="form-control" required>
+                                <option value="">Select a problem type</option>
+                                <option value="classification">Classification (Predict categories)</option>
+                                <option value="regression">Regression (Predict numbers)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Framework</label>
+                            <select name="framework" class="form-control">
+                                <option value="tensorflow">TensorFlow / Keras</option>
+                                <option value="scikit-learn">Scikit-learn</option>
+                                <option value="xgboost">XGBoost</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Advanced Options -->
+                    <div data-step="4">
+                        <h3 style="margin-bottom: 1.5rem;">Training Options</h3>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" name="hyperparameter_tuning" value="true">
+                                <span>🔧 Enable Hyperparameter Tuning</span>
+                            </label>
+                            <div class="form-helper">Automatically find optimal parameters (takes longer)</div>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" name="feature_engineering" value="true" checked>
+                                <span>✨ Auto Feature Engineering</span>
+                            </label>
+                            <div class="form-helper">Automatically create and select important features</div>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" name="cross_validation" value="true" checked>
+                                <span>📊 Cross Validation</span>
+                            </label>
+                            <div class="form-helper">Validate model with multiple data splits</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Review -->
+                    <div data-step="5">
+                        <h3 style="margin-bottom: 1.5rem;">Review & Submit</h3>
+                        <div class="alert alert-info">
+                            <span>ℹ️</span>
+                            <span>Ready to train your model? Click submit to begin training.</span>
+                        </div>
+                        <div class="card" style="margin-bottom: 1.5rem;">
+                            <h4 style="margin-bottom: 1rem;">Summary</h4>
+                            <div style="display: grid; gap: 0.75rem; color: var(--text-secondary);">
+                                <p><strong>Project:</strong> <span id="review-project">-</span></p>
+                                <p><strong>Dataset:</strong> <span id="review-dataset">-</span></p>
+                                <p><strong>Target:</strong> <span id="review-target">-</span></p>
+                                <p><strong>Type:</strong> <span id="review-type">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div style="display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem;">
+                        <button type="button" data-prev-step class="btn btn-secondary" style="display: none;">← Previous</button>
+                        <div style="flex: 1;"></div>
+                        <button type="button" data-next-step class="btn btn-primary">Next →</button>
+                        <button type="submit" class="btn btn-success" style="display: none;">🚀 Train Model</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgba(255, 255, 255, 0.02); border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 3rem 0; text-align: center; color: var(--text-tertiary);">
+        <div class="container">
+            <p style="margin-bottom: 1rem;">&copy; 2026 AutoML Model Builder. Built for data scientists everywhere.</p>
+            <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#">GitHub</a>
+                <a href="#">Documentation</a>
+                <a href="#">Community</a>
+                <a href="#">Terms</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Initialize multi-step form
+        const form = new MultiStepForm('#model-form');
+        
+        // Update review section when moving through form
+        const updateReview = () => {
+            document.getElementById('review-project').textContent = 
+                document.querySelector('input[name="project_name"]').value || '-';
+            document.getElementById('review-dataset').textContent = 
+                (document.querySelector('input[name="dataset"]').files[0]?.name || '-');
+            document.getElementById('review-target').textContent = 
+                document.querySelector('input[name="target_column"]').value || '-';
+            document.getElementById('review-type').textContent = 
+                document.querySelector('select[name="problem_type"]').value || '-';
+        };
+
+        // Initialize file upload drag & drop
+        FileUploadHandler.initDragDrop('.file-input-label', 'input[name="dataset"]');
+
+        // Update buttons based on step
+        const updateButtons = () => {
+            const step = form.getCurrentStep();
+            const totalSteps = form.getTotalSteps();
+            const prevBtn = document.querySelector('[data-prev-step]');
+            const nextBtn = document.querySelector('[data-next-step]');
+            const submitBtn = document.querySelector('button[type="submit"]');
+
+            if (step > 1) {
+                prevBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+            }
+
+            if (step < totalSteps) {
+                nextBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+            }
+
+            updateReview();
+        };
+
+        // Observe form step changes
+        const observer = new MutationObserver(updateButtons);
+        document.querySelectorAll('[data-step]').forEach(step => {
+            observer.observe(step, { attributes: true, attributeFilter: ['class'] });
+        });
+
+        // Initialize
+        updateButtons();
+
+        const trainingPanel = document.getElementById('training-panel');
+        const trainingStatusText = document.getElementById('training-status-text');
+        const trainingProgressFill = document.getElementById('training-progress-fill');
+        let trainingStepIndex = 0;
+        let trainingInterval = null;
+
+        const trainingSteps = [
+            'Preparing your dataset...',
+            'Validating dataset and loading model components...',
+            'Training your model — this may take a few minutes...',
+            'Saving artifacts and finalizing results...',
+            'Almost done — preparing your training report...'
+        ];
+
+        const showTrainingPanel = () => {
+            if (!trainingPanel) return;
+
+            trainingPanel.classList.remove('hidden');
+            trainingPanel.classList.add('visible');
+            trainingStepIndex = 0;
+            trainingStatusText.textContent = trainingSteps[trainingStepIndex];
+            trainingProgressFill.style.width = '10%';
+
+            trainingInterval = setInterval(() => {
+                trainingStepIndex = Math.min(trainingStepIndex + 1, trainingSteps.length - 1);
+                trainingStatusText.textContent = trainingSteps[trainingStepIndex];
+                trainingProgressFill.style.width = `${10 + trainingStepIndex * 18}%`;
+            }, 2500);
+        };
+
+        const hideTrainingPanel = () => {
+            if (!trainingPanel) return;
+            trainingPanel.classList.add('hidden');
+            trainingPanel.classList.remove('visible');
+            trainingProgressFill.style.width = '0%';
+            if (trainingInterval) {
+                clearInterval(trainingInterval);
+                trainingInterval = null;
+            }
+        };
+
+        const formElement = document.querySelector('#model-form');
+        if (formElement) {
+            formElement.addEventListener('submit', () => {
+                LoadingManager.setLoading('button[type="submit"]', true);
+                showTrainingPanel();
+            });
+
+            window.addEventListener('beforeunload', () => {
+                if (trainingInterval) {
+                    clearInterval(trainingInterval);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

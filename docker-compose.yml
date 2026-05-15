@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: automl-web
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - DEBUG=False
+      - SECRET_KEY=${SECRET_KEY:-change-this-in-production}
+      - MAX_UPLOAD_SIZE=26214400
+      - BATCH_SIZE=32
+      - EPOCHS=100
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./uploads:/app/uploads
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+    depends_on:
+      - db
+    networks:
+      - automl-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: automl-db
+    environment:
+      - MYSQL_DATABASE=automl
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpassword}
+      - MYSQL_USER=automl
+      - MYSQL_PASSWORD=${DB_PASSWORD:-automlpass}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - automl-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+
+  # Uncomment for development with auto-reload
+  # web-dev:
+  #   build: .
+  #   container_name: automl-web-dev
+  #   command: flask run --host 0.0.0.0
+  #   ports:
+  #     - "5000:5000"
+  #   environment:
+  #     - FLASK_ENV=development
+  #     - DEBUG=True
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - automl-network
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  automl-network:
+    driver: bridge
